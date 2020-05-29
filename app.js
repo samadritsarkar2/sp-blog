@@ -53,5 +53,5 @@ const port = process.env.PORT || 8000;
 
 // Listening the server
 app.listen(port, ()=>{
-    console.log(`BTT2 App listening at ${port}`);
+    console.log(`Sanganan Prayog Blog listening at ${port}`);
 })

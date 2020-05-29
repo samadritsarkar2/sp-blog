@@ -34,7 +34,7 @@ exports.signup = (req,res)=>{
 
 exports.signin = (req, res) => {
   const { email, password } = req.body;
-  console.log("hit signin");
+ 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({ error : errors.array() });
@@ -51,9 +51,9 @@ exports.signin = (req, res) => {
       })
     }
      // Create token
-     const token = jwt.sign({_id : user._id }, process.env.SECRET);
+     const token = jwt.sign({_id : user._id }, process.env.SECRET, {expiresIn : "12h"} );
      //put token in cookie
-     res.cookie("token", token, {expires : new Date(Date.now() +  9999) });
+     res.cookie("token", token);
 
      // Sending response to frontend
      const {_id, name,username , email, role } = user;
