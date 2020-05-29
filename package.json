@@ -1,7 +1,7 @@
 {
-  "name": "breathtakingtripurav2",
-  "version": "2.0.0",
-  "description": "App to showcase the beauties of Tripura",
+  "name": "Sanganan Prayog Blog",
+  "version": "1.0.0",
+  "description": "Blog App for Sanganan Prayog",
   "main": "app.js",
   "scripts": {
     "client-install": "npm install --prefix client",
