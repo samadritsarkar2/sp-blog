@@ -119,7 +119,7 @@ const NewPost = () => {
 
   const didRedirectFunction = () => {
     if (didRedirect) {
-      return <Redirect to="/all" />;
+      return <Redirect to="/posts/all" />;
     }
   };
 
