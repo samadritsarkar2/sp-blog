@@ -9,13 +9,14 @@ const Signup = () => {
 
     const [values, setValues] = useState({
         name : "",
+        username : "",
         email : "",
         password : "",
         error : "",
         success : false
     });
 
-    const {name, email, password, error, success} = values;
+    const {name, username, email, password, error, success} = values;
 
     const handleChange = name => event => {
         setValues({ ...values, error : false, [name] : event.target.value});
@@ -24,13 +25,14 @@ const Signup = () => {
     const onSubmit = event => {
         event.preventDefault();
         setValues({...values, error : false});
-        signup({name, email, password})
+        signup({name, username, email, password})
         .then(data => {
             if(data.error){
                 setValues({...values, error: data.error, success: false});
             } else {
                 setValues({
                     name : "",
+                    username : "",
                     email : "",
                     password : "",
                     error : "",
@@ -85,12 +87,21 @@ const Signup = () => {
           <div className="col-md-6 offset-sm-3 text-left">
             <form>
               <div className="form-group">
-                <label className="text-dark">Name</label>
+                <label className="text-dark">Full Name</label>
                 <input
                   onChange={handleChange("name")}
                   className="form-control"
                   type="text"
                   value={name}
+                />
+              </div>
+              <div className="form-group">
+                <label className="text-dark">Username</label>
+                <input
+                  onChange={handleChange("username")}
+                  className="form-control"
+                  type="text"
+                  value={username}
                 />
               </div>
               <div className="form-group">
@@ -128,7 +139,7 @@ const Signup = () => {
             {successMessage()}
             {errorMessage()}
             {signUpForm()}
-            {performRedirect()}
+          
         </Base>
         </div>
     )
