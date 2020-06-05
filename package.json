@@ -1,5 +1,7 @@
 {
-  "name": "SangananPrayogBlogBackend",
+
+"name": "SangananPrayogBlogBackend",
+
   "version": "1.0.0",
   "description": "Blog App for Sanganan Prayog",
   "main": "app.js",
