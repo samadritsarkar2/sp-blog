@@ -19,6 +19,20 @@ exports.getUserById = (req, res, next, id) =>{
      
 }
 
+exports.getUserByUsername = (req, res, next, username) => {
+  User.findOne({ username: username }).exec((err, user) => {
+    if (err || !user) 
+    {
+      return res.status(400).json({
+        error: "No USer was found in DB",
+      });
+    }
+    req.profile = user;
+
+    next();
+  });
+};
+
 exports.getUser = (req,res) =>{
   
     // TODO: get back here for password
