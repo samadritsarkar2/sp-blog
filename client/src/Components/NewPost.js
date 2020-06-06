@@ -64,7 +64,7 @@ const NewPost = () => {
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
     [{'list': 'ordered'}, {'list': 'bullet'}, 
      {'indent': '-1'}, {'indent': '+1'}],
-    ['link'],
+    ['link'], [{ 'color': [] }, { 'background': [] }],
     ['clean']
   ],
   }
@@ -73,7 +73,7 @@ const NewPost = () => {
   'header', 'font', 'size',
   'bold', 'italic', 'underline', 'strike', 'blockquote',
   'list', 'bullet', 'indent',
-  'link'
+  'link', 'color', 'background'
   ]
 
   const onSubmit = (event) => {

@@ -47,7 +47,7 @@ const AllPosts = () => {
                     <li className="page-item"><button className="btn btn-dark" onClick={onPrev}>Previous Page</button></li>
                 )  }
                  <li className="page-item"><button className="btn btn-dark" > {current} </button></li>
-                 {total>0 && (<li className="page-item"><button className="btn btn-dark" onClick={onNext}>Next Page</button></li>)}
+                <li className="page-item"><button className="btn btn-dark" onClick={onNext}>Next Page</button></li>
                 
                
             </ul>

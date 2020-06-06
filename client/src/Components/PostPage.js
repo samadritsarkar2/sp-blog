@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getPost, deletePost } from "../Api/PostsAPI";
 import { searchUser, isAuthenticated } from "../Api/AuthAPI";
 import { Link } from "react-router-dom";
+import "../assests/postpage.css"
 
 const PostPage = ({ match, location }) => {
   const { user, token } = isAuthenticated();
