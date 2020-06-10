@@ -36,9 +36,9 @@ exports.createPost = (req, res) => {
       });
     }
     // destructure the fields
-    const { title, post_text } = fields;
+    const { title,preview_text, post_text } = fields;
 
-    if (!title || !post_text) {
+    if (!title || !post_text || !preview_text) {
       return res.status(400).json({
         error : "Please include all fields",
       });

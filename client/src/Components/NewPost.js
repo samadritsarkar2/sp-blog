@@ -13,6 +13,7 @@ const NewPost = () => {
   const [values, setValues] = useState({
     title: "",
     image: "",
+    preview_text : "",
     img_prev : null,
     error: "",
     loading: false,
@@ -24,6 +25,7 @@ const NewPost = () => {
   const {
     title,
     image,
+    preview_text,
     img_prev,
     error,
     loading,
@@ -56,25 +58,6 @@ const NewPost = () => {
     setQuill(value);
     formData.set("post_text", quill);
   }
-
- var modules = {
-  toolbar: [
-    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-    [{size: []}],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{'list': 'ordered'}, {'list': 'bullet'}, 
-     {'indent': '-1'}, {'indent': '+1'}],
-    ['link'], [{ 'color': [] }, { 'background': [] }],
-    ['clean']
-  ],
-  }
-
- var formats = [
-  'header', 'font', 'size',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'color', 'background'
-  ]
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -123,6 +106,29 @@ const NewPost = () => {
     }
   };
 
+
+ var modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, 
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link'], [{ 'color': [] }, { 'background': [] }],
+    ['clean']
+  ],
+  }
+
+ var formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'color', 'background'
+  ]
+
+ 
+
+
   const PostForm = () => {
     return (
       <form encType="multipart/form-data">
@@ -137,8 +143,17 @@ const NewPost = () => {
           />
         </div>
         <div className="form-group" >
-        
+          <input
+            className="form-control"
+            type="text"
+            name="preview_text"
+            value={preview_text}
+            onChange={handleChange("preview_text")}
+            maxLength="100"
+            placeholder="A brief description of your post(Not more than 100 characters)..."
+          />
         </div>
+      
         <div className="form-group">
           <ReactQuill
             placeholder="Write your blog post here..."
@@ -185,7 +200,7 @@ const NewPost = () => {
 
       <div className="row card-deck">
         <div className=" col-sm-12  col-lg-4 container card ">
-        <span className="card-header">
+        <span className="card-header ">
           Preview
         </span>
         { (!img_prev || !title) && (
@@ -202,6 +217,11 @@ const NewPost = () => {
               {title && (
                 <div className="card-title text-center">
                   {title}
+                </div>
+              )}
+              {preview_text && (
+                <div className="card-text text-center">
+                  {preview_text}
                 </div>
               )}
         </div>

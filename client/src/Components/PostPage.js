@@ -5,6 +5,7 @@ import { getPost, deletePost } from "../Api/PostsAPI";
 import { searchUser, isAuthenticated } from "../Api/AuthAPI";
 import { Link } from "react-router-dom";
 import "../assests/postpage.css"
+import { Row, Col } from "shards-react";
 
 const PostPage = ({ match, location }) => {
   const { user, token } = isAuthenticated();
@@ -55,25 +56,27 @@ const PostPage = ({ match, location }) => {
   const showPost = () => {
     return (
       <div>
-        <div className="row text-dark justify-content-center">
-          <div className="col-md-12">
+        
+          <Row>
+          <Col md="12" >
             <img src={img_src} alt={title} style={{maxWidth: "100%", maxHeight : "100"}} className="img-fluid rounded" />
-          </div>
-          </div>
+            </Col>
+          </Row>
           
-          <div className="row">
-          <div className="col-md-12">
+          <Row >
+          <Col md="12" >
           <hr style={{ color : "#2C3335", backgroundColor : "#2C3335", height : "0.01px"}}></hr>
             <ul className="list-inline">
               <li className="list-inline-item">By <Link to={"/posts/user/"+ post.author}><span className="card-text author-link" >{post.author}</span></Link>/</li>
               <li className="list-inline-item"> {postDate} /</li>
             </ul>
             <hr style={{ color : "#2C3335", backgroundColor : "#2C3335", height : "0.01px"}}></hr>
-            <div
+         <p className="post-text">   <div 
               dangerouslySetInnerHTML={{
                 __html: description
               }}
             ></div>
+            </p>
             <p>
               {isAuthenticated() && isAuthenticated().user.role === 1 && (
                 <button className="btn btn-info" onClick={delButton}>
@@ -81,14 +84,14 @@ const PostPage = ({ match, location }) => {
                 </button>
               )}
             </p>
-          </div>
-          </div>
-        </div>
-      
+            </Col>
+          </Row>
+   
+      </div>
     );
   };
 
-  return <Base title={title} className="container" >{showPost()}</Base>;
+  return <Base title={title} className="container" >{showPost()}</Base>
 };
 
 export default PostPage;

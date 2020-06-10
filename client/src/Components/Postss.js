@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import Base from './Base';
-import { getPost, getAllPosts,authorPost  } from '../Api/PostsAPI';
+import { getPost, getAllPosts } from '../Api/PostsAPI';
 import { searchUser } from '../Api/AuthAPI';
 import { Link } from 'react-router-dom';
 import "../index.css";
@@ -19,7 +19,7 @@ import {
   } from "shards-react";
 
 
-const UserPosts = ({match,location}) => {
+const Postss = () => {
 
     const [ posts, setPosts ] = useState([]);
     const [pagi , setPagis] = useState({
@@ -59,7 +59,7 @@ const UserPosts = ({match,location}) => {
                     <li className="page-item"><button className="btn btn-dark" onClick={onPrev}>Previous Page</button></li>
                 )  }
                  <li className="page-item"><button className="btn btn-dark" > {current} </button></li>
-                <li className="page-item"><button className="btn btn-dark" onClick={onNext}>Next Page</button></li>
+                <li className="page-item"><button className="btn btn-dark"  onClick={onNext}>Next Page</button></li>
                 
                
             </ul>
@@ -73,19 +73,17 @@ const UserPosts = ({match,location}) => {
       }
     }
 
- 
     const preloadData =()=>{
-      var userName = match.params.userName;
-      authorPost(userName, limit, skip)
-      .then(data =>{
-          if (data.error) {
-              console.log(data.error);
-            } else {
-              setPosts(data);
-            } 
-      })
+        getAllPosts(limit, skip)
+        .then(data =>{
+            if (data.error) {
+                console.log(data.error);
+              } else {
+                setPosts(data);
+              } 
+        })
 
-  };
+    };
 
     useEffect(()=>{
         preloadData();
@@ -108,8 +106,13 @@ const UserPosts = ({match,location}) => {
                       />
                       <CardBody>
                       <Link to={"/post/" + post._id}> <h5 className="card-title">{post.title}</h5> </Link>
-                        <p className="card-text text-muted">
-                          bhjbazhbhb jbasjbsjbxj  sjbsxjbsxjbsx jbsxjbsxjbsx jbxjbsxjbxjbx
+                        <p className="card-text text-muted ">
+                              {!post.preview_text && (
+                                <span>Post Preview Text...</span>
+                              )}
+                              {post.preview_text && (
+                                <span>{post.preview_text}</span>
+                              )}
                         </p>
                       </CardBody>
                       <CardFooter className="text-muted border-top py-3">
@@ -132,4 +135,4 @@ const UserPosts = ({match,location}) => {
     );
 }
  
-export default UserPosts;
+export default Postss;

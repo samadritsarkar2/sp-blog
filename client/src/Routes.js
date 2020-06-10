@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoutes';
 import AdminRoute from './AdminRoutes';
 import PostPage from './Components/PostPage';
 import UserPosts from './Components/UserPosts';
+import Postss from "./Components/Postss";
 
 
 
@@ -21,7 +22,8 @@ const Routes = () => {
             <Route path="/" exact component={Home} />
             <Route path="/signup" exact component={Signup} />
             <Route path="/signin" exact component={Signin} />
-            <Route path="/posts/all" exact component={AllPosts} />
+    
+            <Route path="/posts/all" exact component={Postss} />
             
             <Route path="/post/:postId" exact component={PostPage} />
             <Route path="/posts/user/:userName" exact component={UserPosts} />

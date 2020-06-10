@@ -8,6 +8,10 @@ var postSchema = new mongoose.Schema(
       maxlength: 32,
       trim: true,
     },
+    preview_text : {
+      type: String,
+      required : true,
+    },
     post_text: {
       type: String,
       required: true,
