@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Card, CardHeader, Button, CardBody } from 'shards-react';
 import { isAuthenticated } from '../../Api/AuthAPI';
-import userAvatar from "../../assests/userAvatar.png";
+
 
 const UserDetails = ({user}) => {
 
