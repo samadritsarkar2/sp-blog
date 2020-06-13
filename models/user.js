@@ -41,6 +41,9 @@ var userSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    position : {
+      type: String
+    },
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
   },
   { timestamps: true }

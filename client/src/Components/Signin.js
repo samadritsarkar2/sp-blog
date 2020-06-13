@@ -104,7 +104,7 @@ const Signin = () => {
     return (
         <div>
         
-        <Base title="Signin Page">
+        <Base title="Signin">
        {loadingMessage()}
        {errorMessage()}
         {signInForm()}

@@ -135,7 +135,7 @@ const Signup = () => {
 
     return (
         <div>
-        <Base title="Signup " >
+        <Base title="Signup" className="text-center" >
             {successMessage()}
             {errorMessage()}
             {signUpForm()}

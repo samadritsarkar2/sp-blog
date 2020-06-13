@@ -45,6 +45,7 @@ exports.getUser = (req,res) =>{
 }
 
 exports.updateUser = (req,res)=>{
+    console.log("update user hit", req.body)
     User.findByIdAndUpdate(
         {_id : req.profile._id},
         {$set : req.body},
@@ -52,6 +53,7 @@ exports.updateUser = (req,res)=>{
         (err, user)=>{
             if(err)
             {
+                console.log("update user hit failed")
                 return res.status(400).json({
                     error : "error occured!"
                 })
@@ -60,6 +62,7 @@ exports.updateUser = (req,res)=>{
             user.encry_password = undefined;
             user.createdAt = undefined;
             user.updatedAt = undefined ;  
+            console.log("update user hit success");
             return res.json(user)
          }
          )
@@ -76,9 +79,6 @@ exports.updateUser = (req,res)=>{
  }
 
 exports.searchUser = (req, res) =>{
-    req.profile.role = undefined;
-    req.profile.email = undefined;
-    req.profile.__v = undefined;
     req.profile.salt = undefined;
     req.profile.encry_password = undefined;
     req.profile.createdAt = undefined;

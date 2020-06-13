@@ -3,7 +3,7 @@ import Base from './Base';
 import Nav from './Nav';
 import '../index.css';
 import { Link } from 'react-router-dom';
-import { Carousel } from "react-bootstrap";
+
 
 const Home = () => {
 

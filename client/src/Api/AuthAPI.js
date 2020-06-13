@@ -82,18 +82,33 @@ export const signup = async (user) => {
      }
  }
  
+export const updateUser = async (user, userId, token) => {
+    try {
+        const response = await fetch(`${API}/user/${userId}` ,{
+            method: "PUT",
+            headers : {
+                Accept : "application/json",
+                Authorization : `Bearer ${token}`
+            },
+            body : JSON.stringify(user)
+        });
+        return response.json();
+    } catch (err) {
+        console.log("Update failed!!");
+    }
+}
 
 
-
-export const searchUser = async (userId) => {
+export const searchUser = async (userId, token) => {
   try {
-    const response = await fetch(`${API}/searchuser/${userId}`, {
+    const response = await fetch(`${API}/user/${userId}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
+        Authorization : `Bearer ${token}`
       },
     });
-    return response;
+    return response.json();
   } catch (err) {
     return console.log(err);
   }

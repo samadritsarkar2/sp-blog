@@ -11,6 +11,7 @@ router.param("userName", getUserByUsername);
 
 router.get("/user/:userId",isSignedin,isAuthenticated, getUser);
 
+// router.get("/search/user/:userId", isSignedin, isAuthenticated, searchUser);
 
 router.put("/user/:userId",isSignedin,isAuthenticated, updateUser);
 

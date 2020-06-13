@@ -108,8 +108,13 @@ const UserPosts = ({match,location}) => {
                       />
                       <CardBody>
                       <Link to={"/post/" + post._id}> <h5 className="card-title">{post.title}</h5> </Link>
-                        <p className="card-text text-muted">
-                          bhjbazhbhb jbasjbsjbxj  sjbsxjbsxjbsx jbsxjbsxjbsx jbxjbsxjbxjbx
+                      <p className="card-text text-muted ">
+                              {!post.preview_text && (
+                                <span>Post Preview Text...</span>
+                              )}
+                              {post.preview_text && (
+                                <span>{post.preview_text}</span>
+                              )}
                         </p>
                       </CardBody>
                       <CardFooter className="text-muted border-top py-3">

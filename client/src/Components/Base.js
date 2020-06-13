@@ -18,8 +18,8 @@ const Base = (
         <Nav />
         <Container >
           <Container fluid className="p-2 mb-2" />
-        
-            <h2 className="display-4"> {title} </h2>
+         
+            <h2 className="display-4" > {title} </h2>
             <p className="lead"> {description} </p> 
   
           </Container>      

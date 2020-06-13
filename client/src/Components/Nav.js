@@ -14,6 +14,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  Col, Row
 } from "shards-react";
 import "../index.css";
 import "../assests/shards.css";
@@ -130,7 +131,15 @@ class NavBar extends React.Component {
   render() {
     return (
       <Navbar sticky="top" type="dark" theme="dark" expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+        <Row  >
+          <Col>
+          <NavbarBrand href="/">Home</NavbarBrand>
+          <NavbarBrand href="#">Intro</NavbarBrand>
+          </Col>
+       
+
+        </Row>
+       
         <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
@@ -140,11 +149,7 @@ class NavBar extends React.Component {
                 All Posts
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink style={{ color: "white" }} href="#">
-                Intro
-              </NavLink>
-            </NavItem>
+          
           </Nav>
 
           <Nav navbar className="ml-auto">
@@ -166,7 +171,11 @@ class NavBar extends React.Component {
                     Signup
                   </DropdownItem>
                 )}
-
+                 {isAuthenticated() && (
+                  <DropdownItem href="/user/profile" style={{ color: "black" }}>
+                   User Profile
+                  </DropdownItem>
+                )}
                 {isAuthenticated() && (
                   <DropdownItem href="/new" style={{ color: "black" }}>
                     Add Blog Post
